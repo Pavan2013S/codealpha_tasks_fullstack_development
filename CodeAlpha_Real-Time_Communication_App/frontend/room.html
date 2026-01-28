@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Meeting Room</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body bgcolor="grey"
+      style="
+          margin:0;
+          font-family:Arial, Helvetica, sans-serif;
+          color:white;
+          padding:30px;
+          box-sizing:border-box;
+          background:#9ca3af;
+      ">
+
+    <div style="
+            max-width:1200px;
+            margin:auto;
+            background:#0f172a;
+            border-radius:20px;
+            padding:30px;
+            box-sizing:border-box;
+            box-shadow:0 20px 40px rgba(0,0,0,0.35);
+        ">
+
+        <!-- Video Section -->
+        <div style="
+                display:flex;
+                gap:24px;
+                margin-bottom:30px;
+            ">
+
+            <video id="localVideo" autoplay muted
+                   style="
+                       width:50%;
+                       height:320px;
+                       background:black;
+                       border-radius:16px;
+                       object-fit:cover;
+                       box-shadow:0 10px 25px rgba(0,0,0,0.4);
+                   ">
+            </video>
+
+            <video id="remoteVideo" autoplay
+                   style="
+                       width:50%;
+                       height:320px;
+                       background:black;
+                       border-radius:16px;
+                       object-fit:cover;
+                       box-shadow:0 10px 25px rgba(0,0,0,0.4);
+                   ">
+            </video>
+        </div>
+
+        <!-- Bottom Section -->
+        <div style="
+                display:flex;
+                gap:30px;
+            ">
+
+            <!-- Chat Panel -->
+            <div style="
+                    flex:2;
+                    background:#020617;
+                    border-radius:18px;
+                    padding:18px;
+                    display:flex;
+                    flex-direction:column;
+                ">
+
+                <div id="chat"
+                     style="
+                         height:180px;
+                         overflow-y:auto;
+                         border:1px solid #334155;
+                         border-radius:12px;
+                         padding:12px;
+                         margin-bottom:14px;
+                         font-size:15px;
+                         background:#020617;
+                     ">
+                </div>
+
+                <div style="display:flex; gap:12px;">
+                    <input id="msg"
+                           placeholder="Type a message"
+                           style="
+                               flex:1;
+                               padding:12px;
+                               font-size:16px;
+                               border-radius:10px;
+                               border:none;
+                               outline:none;
+                           ">
+
+                    <button onclick="send()"
+                            style="
+                                padding:12px 26px;
+                                font-size:16px;
+                                border:none;
+                                border-radius:10px;
+                                cursor:pointer;
+                                background:#38bdf8;
+                                color:black;
+                                font-weight:600;
+                            ">
+                        Send
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tools Panel -->
+            <div style="
+                    flex:1;
+                    background:#020617;
+                    border-radius:18px;
+                    padding:18px;
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:space-between;
+                ">
+
+                <!-- File Sharing -->
+                <div>
+                    <input type="file" id="fileInput"
+                           style="
+                               font-size:14px;
+                           ">
+
+                    <div id="fileList"
+                         style="
+                             margin-top:12px;
+                             font-size:14px;
+                             color:#cbd5f5;
+                         ">
+                    </div>
+                </div>
+
+                <!-- Whiteboard & Screen Share -->
+                <div style="
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        margin-top:20px;
+                    ">
+
+                    <canvas id="board" width="250" height="250"
+                            style="
+                                border:2px solid #64748b;
+                                border-radius:12px;
+                                background:#020617;
+                            ">
+                    </canvas>
+
+                    <button onclick="share()"
+                            style="
+                                padding:14px 28px;
+                                font-size:16px;
+                                border:none;
+                                border-radius:12px;
+                                cursor:pointer;
+                                background:#22c55e;
+                                color:black;
+                                font-weight:600;
+                            ">
+                        Share Screen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="js/webrtc.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/file.js"></script>
+    <script src="js/whiteboard.js"></script>
+    <script src="js/screen.js"></script>
+
+</body>
+</html>
