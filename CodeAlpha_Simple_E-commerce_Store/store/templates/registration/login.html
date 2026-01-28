@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(135deg, #1e3c72, #2a5298);
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #333;
+            }
+
+            form {
+                background: #ffffff;
+                padding: 30px 40px;
+                border-radius: 8px;
+                width: 350px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            }
+
+            form p {
+                margin-bottom: 15px;
+            }
+
+            input {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+
+            input:focus {
+                outline: none;
+                border-color: #2a5298;
+                box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
+            }
+
+            button {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+                background: #2a5298;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                font-size: 15px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background 0.3s ease;
+            }
+
+            button:hover {
+                background: #1e3c72;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="post">
+            {% csrf_token %}
+            <h2>Login</h2>
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </body>
+</html>
